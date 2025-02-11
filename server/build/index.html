@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+
+</head>
+<body class="flex items-center justify-center h-screen bg-gray-100">
+    <div class="bg-white p-6 rounded-lg shadow-xl w-80">
+        <input id="display" class="w-full text-right text-2xl p-2 mb-4 border rounded" disabled>
+        <div class="grid grid-cols-4 gap-2">
+            <button class="btn bg-gray-300" onclick="clearDisplay()">C</button>
+            <button class="btn bg-gray-300" onclick="appendToDisplay('(')">(</button>
+            <button class="btn bg-gray-300" onclick="appendToDisplay(')')">)</button>
+            <button class="btn bg-yellow-400" onclick="appendToDisplay('/')">/</button>
+            <button class="btn" onclick="appendToDisplay('7')">7</button>
+            <button class="btn" onclick="appendToDisplay('8')">8</button>
+            <button class="btn" onclick="appendToDisplay('9')">9</button>
+            <button class="btn bg-yellow-400" onclick="appendToDisplay('*')">*</button>
+            <button class="btn" onclick="appendToDisplay('4')">4</button>
+            <button class="btn" onclick="appendToDisplay('5')">5</button>
+            <button class="btn" onclick="appendToDisplay('6')">6</button>
+            <button class="btn bg-yellow-400" onclick="appendToDisplay('-')">-</button>
+            <button class="btn" onclick="appendToDisplay('1')">1</button>
+            <button class="btn" onclick="appendToDisplay('2')">2</button>
+            <button class="btn" onclick="appendToDisplay('3')">3</button>
+            <button class="btn bg-yellow-400" onclick="appendToDisplay('+')">+</button>
+            <button class="btn col-span-2" onclick="appendToDisplay('0')">0</button>
+            <button class="btn" onclick="appendToDisplay('.')">.</button>
+            <button class="btn bg-green-400" onclick="calculate()">=</button>
+        </div>
+    </div>
+    
+    <script>
+        function appendToDisplay(value) {
+            document.getElementById('display').value += value;
+        }
+        function clearDisplay() {
+            document.getElementById('display').value = '';
+        }
+        function calculate() {
+            try {
+                document.getElementById('display').value = eval(document.getElementById('display').value);
+            } catch {
+                document.getElementById('display').value = 'Error';
+            }
+        }
+    </script>
+    <style>
+        .btn {
+            @apply bg-gray-200 text-xl font-semibold p-4 rounded shadow hover:bg-gray-300;
+        }
+    </style>
+</body>
+</html>
